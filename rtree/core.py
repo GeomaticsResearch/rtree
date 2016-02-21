@@ -104,13 +104,17 @@ if os.name == 'nt':
 
     rt = _load_library('spatialindex_c.dll', ctypes.cdll.LoadLibrary)
     if not rt:
-        raise OSError("could not find or load spatialindex_c.dll")
+        rt = _load_library('spatialindex_c-64.dll', ctypes.cdll.LoadLibrary)
+        if not rt:
+            raise OSError("could not find or load spatialindex_c.dll or spatialindex_c-64.dll")
 
 elif os.name == 'posix':
     platform = os.uname()[0]
     lib_name = find_library('spatialindex_c')
     if lib_name is None:
-        raise OSError("Could not find libspatialindex_c library file")
+        lib_name = find_library('spatialindex_c-64')
+        if lib_name is None:
+            raise OSError("Could not find libspatialindex_c or spatialindex_c-64 library file")
 
     rt = ctypes.CDLL(lib_name)
 else:
