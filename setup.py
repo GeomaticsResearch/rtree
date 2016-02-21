@@ -13,11 +13,11 @@ if os.name == 'nt':
     if os.path.exists(r'C:\OSGeo4W64\bin\spatialindex_c-64.dll'):
         data_files = [('Lib/site-packages/rtree',
                   [r'C:\OSGeo4W64\bin\spatialindex_c-64.dll',
-                   r'D:\libspatialindex\bin\spatialindex-64.dll'])]
+                   r'C:\OSGeo4W64\bin\spatialindex-64.dll'])]
     else:
         data_files = [('Lib/site-packages/rtree',
                   [r'C:\OSGeo4W64\bin\spatialindex_c.dll',
-                   r'D:\libspatialindex\bin\spatialindex.dll'])]
+                   r'C:\OSGeo4W64\bin\spatialindex.dll'])]
 else:
     data_files = None
 
